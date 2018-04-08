@@ -10,7 +10,6 @@ import com.shivamsingh.blog_lite.data.source.remote.dto.UserDto
 import com.shivamsingh.blog_lite.domain.model.Comment
 import com.shivamsingh.blog_lite.domain.model.Post
 import com.shivamsingh.blog_lite.domain.repository.BlogRepository
-import io.reactivex.Flowable
 import io.reactivex.Single
 import io.reactivex.functions.BiFunction
 
@@ -18,17 +17,15 @@ class BlogRepositoryImpl constructor(private val remoteSource: BlogRemoteSource,
                                      private val postMapper: PostMapper,
                                      private val commentMapper: CommentMapper) : BlogRepository {
 
-    override fun posts(): Flowable<List<Post>> {
+    override fun posts(): Single<List<Post>> {
 
         return blogDatabse()
                 .map { postMapper.map(it) }
-                .toFlowable()
     }
 
-    override fun comments(postId: Int): Flowable<List<Comment>> {
+    override fun comments(postId: Int): Single<List<Comment>> {
         return remoteSource.comments()
                 .map { commentMapper.map(it) }
-                .toFlowable()
     }
 
     private fun blogDatabse(): Single<BlogDatabase> {
