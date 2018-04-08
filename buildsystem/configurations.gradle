@@ -1,0 +1,16 @@
+ext {
+    android = [
+            applicationId           : "com.shivamsingh.blog_lite",
+            versionCode             : 1,
+            versionName             : "1.0.0",
+            buildToolsVersion       : "27.0.3",
+            minSdkVersion           : 16,
+            targetSdkVersion        : 27,
+            compileSdkVersion       : 27
+    ]
+
+    endpoints = [
+            staging_endpoint_url = "\"http://jsonplaceholder.typicode.com/\"",
+            live_endpoint_url = "\"http://jsonplaceholder.typicode.com/\""
+    ]
+}

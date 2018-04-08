@@ -1,19 +1,22 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 26
+    def conf = rootProject.ext.android
+
+    compileSdkVersion conf.compileSdkVersion
+    buildToolsVersion conf.buildToolsVersion
+
     defaultConfig {
-        applicationId "com.shivamsingh.blog_lite"
-        minSdkVersion 16
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        applicationId conf.applicationId
+        minSdkVersion conf.minSdkVersion
+        targetSdkVersion conf.targetSdkVersion
+        versionCode conf.versionCode
+        versionName conf.versionName
+        multiDexEnabled true
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -23,10 +26,61 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    def commonDependencies = rootProject.ext.commonDependencies
+    def developmentDependencies = rootProject.ext.developmentDependencies
+
+    implementation project(':domain')
+    implementation project(':data')
+
+    implementation commonDependencies.kotlin
+    implementation commonDependencies.kotlinReflection
+
+    // Android
+    implementation commonDependencies.supportAppCompatV7
+    implementation commonDependencies.supportV13
+    implementation commonDependencies.supportAnnotation
+    implementation commonDependencies.supportCardView
+    implementation commonDependencies.supportRecyclerView
+    implementation commonDependencies.constraintLayout
+    implementation commonDependencies.supportDesign
+
+    // RxJava 2
+    implementation commonDependencies.rxJava2
+    implementation commonDependencies.rxAndroid
+
+    // Dagger 2
+    implementation commonDependencies.dagger2
+    kapt commonDependencies.dagger2Compiler
+    implementation commonDependencies.dagger2Android
+    kapt commonDependencies.dagger2AndroidCompiler
+    compileOnly commonDependencies.javaxAnnotation
+
+    // Networking
+    implementation commonDependencies.okHttp
+    implementation commonDependencies.okHttpInterceptor
+
+    // Networking Retrofit
+    implementation commonDependencies.retrofit2
+    implementation commonDependencies.retrofitRxAdapter
+    implementation commonDependencies.retrofitConverter
+
+    // Gson
+    implementation commonDependencies.gson
+
+    // Logging
+    implementation commonDependencies.timber
+
+    // Stetho
+    implementation developmentDependencies.stetho
+    implementation developmentDependencies.stethoOkHttp
+
+    // Leak Canary
+    debugImplementation developmentDependencies.leakcanary
+    releaseImplementation developmentDependencies.leakcanaryNoOp
+    testImplementation developmentDependencies.leakcanaryNoOp
+
+    // Chuck
+    debugImplementation developmentDependencies.chuck
+    releaseImplementation developmentDependencies.chuckNoOp
+    testImplementation developmentDependencies.chuckNoOp
 }
