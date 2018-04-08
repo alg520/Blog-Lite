@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     def conf = rootProject.ext.android
@@ -15,6 +16,8 @@ android {
         versionCode conf.versionCode
         versionName conf.versionName
         multiDexEnabled true
+
+        buildConfigField "String", "API_ENDPOINT", live_endpoint_url
     }
 
     buildTypes {

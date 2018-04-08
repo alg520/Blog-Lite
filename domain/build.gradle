@@ -23,4 +23,29 @@ android {
 }
 
 dependencies {
+    implementation commonDependencies.kotlin
+    implementation commonDependencies.kotlinReflection
+
+    // RxJava 2
+    implementation commonDependencies.rxJava2
+    implementation commonDependencies.rxAndroid
+
+    // Dagger 2
+    implementation commonDependencies.dagger2
+    kapt commonDependencies.dagger2Compiler
+    implementation commonDependencies.dagger2Android
+    kapt commonDependencies.dagger2AndroidCompiler
+    compileOnly commonDependencies.javaxAnnotation
+
+    // Networking
+    implementation commonDependencies.okHttp
+    implementation commonDependencies.okHttpInterceptor
+
+    // Networking Retrofit
+    implementation commonDependencies.retrofit2
+    implementation commonDependencies.retrofitRxAdapter
+    implementation commonDependencies.retrofitConverter
+}
+repositories {
+    mavenCentral()
 }
