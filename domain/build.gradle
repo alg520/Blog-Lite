@@ -45,6 +45,9 @@ dependencies {
     implementation commonDependencies.retrofit2
     implementation commonDependencies.retrofitRxAdapter
     implementation commonDependencies.retrofitConverter
+
+    // Logging
+    implementation commonDependencies.timber
 }
 repositories {
     mavenCentral()
