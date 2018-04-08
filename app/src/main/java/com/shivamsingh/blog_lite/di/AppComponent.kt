@@ -13,10 +13,12 @@ import dagger.android.support.AndroidSupportInjectionModule
 import dagger.android.support.DaggerApplication
 
 @PerApplication
-@Component(modules = arrayOf(
-        ActivityBindingModule::class,
-        ApplicationModule::class, NetworkModule::class,
-        AndroidSupportInjectionModule::class))
+@Component(modules = [
+    (ActivityBindingModule::class),
+    (ApplicationModule::class),
+    (NetworkModule::class),
+    (AndroidSupportInjectionModule::class)
+])
 interface AppComponent : AndroidInjector<DaggerApplication> {
 
     @Component.Builder
@@ -29,6 +31,5 @@ interface AppComponent : AndroidInjector<DaggerApplication> {
 
     fun inject(app: BlogApplication)
 
-    override
-    fun inject(instance: DaggerApplication)
+    override fun inject(instance: DaggerApplication)
 }

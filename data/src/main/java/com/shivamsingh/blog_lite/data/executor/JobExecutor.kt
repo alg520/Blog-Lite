@@ -1,4 +1,4 @@
-package com.shivamsingh.blog_lite.data
+package com.shivamsingh.blog_lite.data.executor
 
 import java.util.concurrent.*
 import javax.inject.Inject

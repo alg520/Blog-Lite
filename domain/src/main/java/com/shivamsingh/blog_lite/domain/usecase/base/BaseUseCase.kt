@@ -1,12 +1,13 @@
 package com.shivamsingh.blog_lite.domain.usecase.base
 
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.subscribers.DisposableSubscriber
 import timber.log.Timber
 
-abstract class BaseUseCase<T> {
+abstract class BaseUseCase<T> : Disposable {
 
     protected var disposables = CompositeDisposable()
 
@@ -63,7 +64,11 @@ abstract class BaseUseCase<T> {
         }
     }
 
-    fun dispose() {
+    override fun dispose() {
         disposables.clear()
+    }
+
+    override fun isDisposed(): Boolean {
+        return disposables.isDisposed
     }
 }

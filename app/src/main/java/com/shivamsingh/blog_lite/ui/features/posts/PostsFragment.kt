@@ -2,10 +2,10 @@ package com.shivamsingh.blog_lite.ui.features.posts
 
 import android.os.Bundle
 import com.shivamsingh.blog_lite.R
+import com.shivamsingh.blog_lite.domain.model.Post
 import com.shivamsingh.blog_lite.ui.base.BaseFragment
 import com.shivamsingh.blog_lite.ui.features.posts.PostsContract.Presenter
 import com.shivamsingh.blog_lite.ui.features.posts.PostsContract.View
-import com.shivamsingh.blog_lite.ui.features.posts.entity.PostViewEntity
 import javax.inject.Inject
 
 class PostsFragment : BaseFragment(), View {
@@ -20,7 +20,7 @@ class PostsFragment : BaseFragment(), View {
         this.presenter.takeView(this)
     }
 
-    override fun showPosts(posts: List<PostViewEntity>) {
+    override fun showPosts(posts: List<Post>) {
     }
 
     override fun onViewCreated(view: android.view.View, savedInstanceState: Bundle?) {
