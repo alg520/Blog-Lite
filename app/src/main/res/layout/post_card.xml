@@ -1,46 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/post"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="10dp">
 
     <ImageView
         android:id="@+id/pic"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:srcCompat="?attr/colorPrimary" />
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:ellipsize="end"
-        android:maxLines="3"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/pic"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/body"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pic" />
-
-    <ImageView
-        android:id="@+id/comment_icon"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@id/comments_count"
-        app:layout_constraintTop_toBottomOf="@+id/body"
-        app:srcCompat="@drawable/ic_comment" />
 
     <TextView
         android:id="@+id/comments_count"
@@ -53,4 +42,14 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/body" />
+
+    <ImageView
+        android:id="@+id/comment_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:tint="@color/colorAccent"
+        app:layout_constraintEnd_toStartOf="@id/comments_count"
+        app:layout_constraintTop_toBottomOf="@+id/body"
+        app:srcCompat="@drawable/ic_comment" />
 </android.support.constraint.ConstraintLayout>

@@ -6,17 +6,24 @@ import com.shivamsingh.blog_lite.data.source.remote.dto.PostDto
 import com.shivamsingh.blog_lite.domain.model.Post
 import java.util.*
 import javax.inject.Inject
+import javax.inject.Named
 
-class PostMapper @Inject constructor() : Mapper<List<Post>, BlogDatabase>() {
+class PostMapper @Inject constructor(@Named(AVATAR_URL_WITH_EMAIL_PLACEHOLDER) val avatarUrlWithEmailPlaceHolder: String) : Mapper<List<Post>, BlogDatabase>() {
+    companion object {
+        const val AVATAR_URL_WITH_EMAIL_PLACEHOLDER = "AVATAR_URL_WITH_EMAIL_PLACEHOLDER"
+    }
 
     override fun map(blog: BlogDatabase): List<Post> {
         return blog.posts?.map { post ->
-            val email = email(blog, post)
+            val avatarUrl = avatarUrl(blog, post)
             val comments = blog.comments?.filter { it.postId == post.id }
-            Post(post.id, post.title, post.body, email ?: emptyString, comments?.size ?: invalidInt)
+            Post(post.id, post.title, post.body, avatarUrl, comments?.size
+                    ?: invalidInt)
         }?.toList() ?: Collections.emptyList()
     }
 
-    private fun email(blog: BlogDatabase, post: PostDto) =
-            blog.users?.firstOrNull { it.id == post.userId }?.email
+    private fun avatarUrl(blog: BlogDatabase, post: PostDto): String {
+        val emailOrEmpty = blog.users?.firstOrNull { it.id == post.userId }?.email ?: emptyString
+        return avatarUrlWithEmailPlaceHolder.format(emailOrEmpty)
+    }
 }

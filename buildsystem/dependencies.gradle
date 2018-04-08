@@ -16,6 +16,8 @@ ext {
     retrofit2 = '2.3.0'
     gson = '2.8.1'
     timber = '4.6.1'
+    recyclerDivider = '1.4.0'
+    picasso = '2.71828'
 
     // Instrumentation
     stetho = '1.5.0'
@@ -71,7 +73,11 @@ ext {
             archLifecycleRuntime        : "android.arch.lifecycle:runtime:${archLifecycle}",
             archLifecycleExtensions     : "android.arch.lifecycle:extensions:${archLifecycle}",
             archLifecycleReactiveStreams: "android.arch.lifecycle:reactivestreams:${archLifecycle}",
-            archLifecycleCompiler       : "android.arch.lifecycle:compiler:${archLifecycle}"
+            archLifecycleCompiler       : "android.arch.lifecycle:compiler:${archLifecycle}",
+
+            recyclerDivider             : "com.yqritc:recyclerview-flexibledivider:$recyclerDivider",
+
+            picasso                     : "com.squareup.picasso:picasso:$picasso"
     ]
 
     commonTestDependencies = [
