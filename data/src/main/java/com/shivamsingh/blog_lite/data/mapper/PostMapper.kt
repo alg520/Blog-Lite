@@ -18,5 +18,5 @@ class PostMapper @Inject constructor() : Mapper<List<Post>, BlogDatabase>() {
     }
 
     private fun email(blog: BlogDatabase, post: PostDto) =
-            blog.users?.first { it.id == post.userId }?.email
+            blog.users?.firstOrNull { it.id == post.userId }?.email
 }
