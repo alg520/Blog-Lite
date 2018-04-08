@@ -1,14 +1,22 @@
 package com.shivamsingh.blog_lite
 
+import android.app.Activity
 import android.app.Application
 import android.os.StrictMode
 import com.facebook.stetho.Stetho
 import com.shivamsingh.blog_lite.di.DaggerAppComponent
 import com.shivamsingh.blog_lite.platform.logging.ErrorReportingTree
 import com.squareup.leakcanary.LeakCanary
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasActivityInjector
 import timber.log.Timber
+import javax.inject.Inject
 
-class BlogApplication : Application() {
+class BlogApplication : Application(), HasActivityInjector {
+    @Inject
+    lateinit var activityDispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+
+    override fun activityInjector() = activityDispatchingAndroidInjector
 
     override fun onCreate() {
         super.onCreate()

@@ -7,8 +7,8 @@ import com.shivamsingh.blog_lite.domain.usecase.base.SingleUseCase
 import io.reactivex.Single
 import javax.inject.Inject
 
-class GetAllPostsUseCase @Inject constructor(schedulerProvider: SchedulerProvider,
-                                             val repository: BlogRepository)
+class FetchPostsUseCase @Inject constructor(schedulerProvider: SchedulerProvider,
+                                            val repository: BlogRepository)
     : SingleUseCase<List<Post>, Unit>(schedulerProvider) {
 
     override fun buildUseCase(params: Unit): Single<List<Post>> {

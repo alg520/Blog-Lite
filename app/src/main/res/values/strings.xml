@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Blog-Lite</string>
+    <string name="comments_count">%d comments</string>
 </resources>

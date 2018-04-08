@@ -9,7 +9,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
-@Module
+@Module(includes = [(PostsListModule::class)])
 abstract class PostsModule {
 
     @PerFragment
