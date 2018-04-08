@@ -5,7 +5,7 @@ import io.reactivex.Completable
 
 abstract class CompletableUseCase<T, Params>(val schedulerProvider: SchedulerProvider) : BaseUseCase<Void>() {
 
-    abstract fun buildUseCase(parameters: Params): Completable
+    abstract fun buildUseCase(params: Params): Completable
 
     fun execute(onCompleted: () -> Unit, onError: (Throwable?) -> Unit = {}, params: Params) {
         val completable = buildUseCase(params)

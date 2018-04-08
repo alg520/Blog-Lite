@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 abstract class FlowableUseCase<T, Params> @Inject constructor(val schedulerProvider: SchedulerProvider) : BaseUseCase<T>() {
 
-    abstract fun buildUseCase(parameters: Params): Flowable<T>
+    abstract fun buildUseCase(params: Params): Flowable<T>
 
     fun execute(onNext: (T) -> Unit, onError: (Throwable) -> Unit = {}, params: Params) {
         val flowable = buildUseCase(params)
