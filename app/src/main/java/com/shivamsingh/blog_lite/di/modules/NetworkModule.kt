@@ -20,6 +20,7 @@ import javax.inject.Qualifier
 class NetworkModule {
     companion object {
         const val API_BASE_URL = "API_BASE_URL"
+        const val AVATAR_URL_WITH_EMAIL_PLACEHOLDER = "AVATAR_URL_WITH_EMAIL_PLACEHOLDER"
     }
 
     @Qualifier
@@ -33,9 +34,12 @@ class NetworkModule {
     @Provides
     @Named(API_BASE_URL)
     @PerApplication
-    fun providesAPIBaseUrl(): String {
-        return BuildConfig.API_ENDPOINT
-    }
+    fun providesAPIBaseUrl() = BuildConfig.API_ENDPOINT
+
+    @Provides
+    @Named(AVATAR_URL_WITH_EMAIL_PLACEHOLDER)
+    @PerApplication
+    fun providesAvatarUrl() = "${BuildConfig.AVATAR_ENDPOINT}200/%s.png"
 
     @Provides
     @PerApplication
