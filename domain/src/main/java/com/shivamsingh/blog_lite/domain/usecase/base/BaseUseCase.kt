@@ -1,4 +1,4 @@
-package com.shivamsingh.blog_lite.domain.usecase
+package com.shivamsingh.blog_lite.domain.usecase.base
 
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableCompletableObserver
