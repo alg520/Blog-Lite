@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Blog-Lite</string>
     <string name="comments_count">%d comments</string>
+    <string name="posts_title">Blog-Lite Posts</string>
 </resources>

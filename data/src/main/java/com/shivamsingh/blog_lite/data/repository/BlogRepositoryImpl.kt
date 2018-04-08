@@ -30,8 +30,8 @@ class BlogRepositoryImpl constructor(private val remoteSource: BlogRemoteSource,
 
     private fun blogDatabse(): Single<BlogDatabase> {
         return Single.just(BlogDatabase())
-                .zipWith(remoteSource.posts(), BiFunction<BlogDatabase, List<PostDto>, BlogDatabase> { t1, t2 -> t1.apply { t1.posts = t2 } })
-                .zipWith(remoteSource.users(), BiFunction<BlogDatabase, List<UserDto>, BlogDatabase> { t1, t2 -> t1.apply { t1.users = t2 } })
-                .zipWith(remoteSource.comments(), BiFunction<BlogDatabase, List<CommentDto>, BlogDatabase> { t1, t2 -> t1.apply { t1.comments = t2 } })
+                .zipWith(remoteSource.posts(), BiFunction<BlogDatabase, List<PostDto>, BlogDatabase> { t1, t2 -> t1.also { t1.posts = t2 } })
+                .zipWith(remoteSource.users(), BiFunction<BlogDatabase, List<UserDto>, BlogDatabase> { t1, t2 -> t1.also { t1.users = t2 } })
+                .zipWith(remoteSource.comments(), BiFunction<BlogDatabase, List<CommentDto>, BlogDatabase> { t1, t2 -> t1.also { t1.comments = t2 } })
     }
 }

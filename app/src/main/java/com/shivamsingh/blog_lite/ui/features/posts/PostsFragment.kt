@@ -3,6 +3,7 @@ package com.shivamsingh.blog_lite.ui.features.posts
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
+import android.widget.Toast
 import butterknife.BindView
 import com.aasaanjobs.partnerinternal.recyclerview.DisplayableItem
 import com.aasaanjobs.partnerinternal.recyclerview.RecyclerViewAdapter
@@ -11,7 +12,9 @@ import com.shivamsingh.blog_lite.domain.model.Post
 import com.shivamsingh.blog_lite.ui.base.BaseFragment
 import com.shivamsingh.blog_lite.ui.features.posts.PostsContract.Presenter
 import com.shivamsingh.blog_lite.ui.features.posts.PostsContract.View
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import javax.inject.Inject
+
 
 class PostsFragment : BaseFragment(), View {
     @Inject
@@ -58,9 +61,17 @@ class PostsFragment : BaseFragment(), View {
     }
 
     private fun configureRecyclerView() {
+        posts.addItemDecoration(divider())
         posts.setHasFixedSize(true)
         posts.adapter = adapter
         adapter.onViewHolderCreated { subscribeToPostEvents(it as PostCardHolder) }
+    }
+
+    private fun divider(): HorizontalDividerItemDecoration? {
+        return HorizontalDividerItemDecoration.Builder(context)
+                .color(resources.getColor(R.color.grey_c9))
+                .sizeResId(R.dimen.divider)
+                .build()
     }
 
     private fun subscribeToPostEvents(postCardHolder: PostCardHolder) {
@@ -68,6 +79,7 @@ class PostsFragment : BaseFragment(), View {
     }
 
     private fun openPost(post: Post) {
+        Toast.makeText(context, "Open Post: $post.id", Toast.LENGTH_LONG).show()
     }
 
     override fun onDestroy() {

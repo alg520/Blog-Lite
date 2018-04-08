@@ -72,6 +72,12 @@ dependencies {
     implementation commonDependencies.retrofitRxAdapter
     implementation commonDependencies.retrofitConverter
 
+    // Recycler Divider
+    implementation commonDependencies.recyclerDivider
+
+    // Recycler Divider
+    implementation commonDependencies.picasso
+
     // Gson
     implementation commonDependencies.gson
 
