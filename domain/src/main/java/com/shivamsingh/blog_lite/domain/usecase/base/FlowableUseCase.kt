@@ -1,4 +1,4 @@
-package com.shivamsingh.blog_lite.domain.usecase
+package com.shivamsingh.blog_lite.domain.usecase.base
 
 import com.shivamsingh.blog_lite.domain.executor.SchedulerProvider
 import io.reactivex.Flowable
