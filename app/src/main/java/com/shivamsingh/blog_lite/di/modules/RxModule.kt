@@ -3,7 +3,7 @@ package com.shivamsingh.blog_lite.di.modules
 import com.aasaanjobs.partnerinternal.di.scopes.PerApplication
 import com.aasaanjobs.partnerinternal.domain.executor.ExecutionThread
 import com.aasaanjobs.partnerinternal.domain.executor.PostExecutionThread
-import com.shivamsingh.blog_lite.platform.executor.JobExecutor
+import com.shivamsingh.blog_lite.data.JobExecutor
 import dagger.Module
 import dagger.Provides
 import io.reactivex.Scheduler

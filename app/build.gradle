@@ -58,6 +58,10 @@ dependencies {
     kapt commonDependencies.dagger2AndroidCompiler
     compileOnly commonDependencies.javaxAnnotation
 
+    // ButterKnife
+    implementation commonDependencies.butterKnife
+    kapt commonDependencies.butterKnifeCompiler
+
     // Networking
     implementation commonDependencies.okHttp
     implementation commonDependencies.okHttpInterceptor
