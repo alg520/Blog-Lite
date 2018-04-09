@@ -48,6 +48,11 @@ dependencies {
     implementation commonDependencies.retrofit2
     implementation commonDependencies.retrofitRxAdapter
     implementation commonDependencies.retrofitConverter
+
+    // Unit testing
+    testImplementation commonTestDependencies.junit
+    testImplementation commonTestDependencies.assertj
+    testImplementation commonTestDependencies.mockito
 }
 repositories {
     mavenCentral()

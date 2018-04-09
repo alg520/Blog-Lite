@@ -48,6 +48,11 @@ dependencies {
 
     // Logging
     implementation commonDependencies.timber
+
+    // Unit testing
+    testImplementation commonTestDependencies.junit
+    testImplementation commonTestDependencies.assertj
+    testImplementation commonTestDependencies.mockito
 }
 repositories {
     mavenCentral()
