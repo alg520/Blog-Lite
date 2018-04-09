@@ -32,6 +32,7 @@ android {
 dependencies {
     def commonDependencies = rootProject.ext.commonDependencies
     def developmentDependencies = rootProject.ext.developmentDependencies
+    def commonTestDependencies = rootProject.ext.commonTestDependencies
 
     implementation project(':domain')
     implementation project(':data')
@@ -97,4 +98,9 @@ dependencies {
     debugImplementation developmentDependencies.chuck
     releaseImplementation developmentDependencies.chuckNoOp
     testImplementation developmentDependencies.chuckNoOp
+
+    // Unit testing
+    testImplementation commonTestDependencies.junit
+    testImplementation commonTestDependencies.assertj
+    testImplementation commonTestDependencies.mockito
 }
