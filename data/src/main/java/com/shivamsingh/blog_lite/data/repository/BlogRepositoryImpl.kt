@@ -28,7 +28,7 @@ class BlogRepositoryImpl constructor(private val remoteSource: BlogRemoteSource,
         return remoteSource.comments()
                 .toObservable()
                 .flatMap { Observable.fromIterable(it) }
-                .filter { it.postId == postId }
+//                .filter { it.postId == postId }
                 .toList()
                 .map { commentMapper.map(it) }
 

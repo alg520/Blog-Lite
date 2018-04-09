@@ -4,10 +4,10 @@ import com.aasaanjobs.partnerinternal.recyclerview.ItemComparator
 import com.aasaanjobs.partnerinternal.recyclerview.RecyclerViewAdapter
 import com.aasaanjobs.partnerinternal.recyclerview.ViewHolderBinder
 import com.aasaanjobs.partnerinternal.recyclerview.ViewHolderFactory
-import com.shivamsingh.blog_lite.domain.model.Post
 import com.shivamsingh.blog_lite.ui.features.posts.PostCardHolderBinder
 import com.shivamsingh.blog_lite.ui.features.posts.PostCardHolderFactory
 import com.shivamsingh.blog_lite.ui.features.posts.PostItemComparator
+import com.shivamsingh.blog_lite.ui.model.PostEntity
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -23,14 +23,14 @@ abstract class PostsListModule {
 
         @Provides
         @JvmStatic
-        fun provideComparator(): ItemComparator<Post> = PostItemComparator()
+        fun provideComparator(): ItemComparator<PostEntity> = PostItemComparator()
 
         @Provides
         @JvmStatic
-        fun provideRecyclerAdapter(itemComparator: ItemComparator<Post>,
+        fun provideRecyclerAdapter(itemComparator: ItemComparator<PostEntity>,
                                    factoryMap: Map<Int, @JvmSuppressWildcards ViewHolderFactory>,
-                                   binderMap: Map<Int, @JvmSuppressWildcards ViewHolderBinder<Post>>)
-                : RecyclerViewAdapter<Post> = RecyclerViewAdapter(itemComparator, factoryMap, binderMap)
+                                   binderMap: Map<Int, @JvmSuppressWildcards ViewHolderBinder<PostEntity>>)
+                : RecyclerViewAdapter<PostEntity> = RecyclerViewAdapter(itemComparator, factoryMap, binderMap)
     }
 
     @Binds
@@ -41,5 +41,5 @@ abstract class PostsListModule {
     @Binds
     @IntoMap
     @IntKey(POST_ITEM)
-    internal abstract fun provideCandidateViewHolderBinder(binder: PostCardHolderBinder): ViewHolderBinder<Post>
+    internal abstract fun provideCandidateViewHolderBinder(binder: PostCardHolderBinder): ViewHolderBinder<PostEntity>
 }

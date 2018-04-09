@@ -11,16 +11,17 @@ import com.shivamsingh.blog_lite.domain.model.Post
 import com.shivamsingh.blog_lite.ui.base.BaseFragment
 import com.shivamsingh.blog_lite.ui.features.posts.PostsContract.Presenter
 import com.shivamsingh.blog_lite.ui.features.posts.PostsContract.View
+import com.shivamsingh.blog_lite.ui.model.PostEntity
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 
 
 class PostsFragment : BaseFragment(), View {
-    val postSelected = PublishSubject.create<Post>()
+    val postSelected = PublishSubject.create<PostEntity>()
 
     @Inject
-    lateinit var adapter: RecyclerViewAdapter<Post>
+    lateinit var adapter: RecyclerViewAdapter<PostEntity>
 
     @BindView(R.id.refresh)
     lateinit var refresh: SwipeRefreshLayout
@@ -45,11 +46,11 @@ class PostsFragment : BaseFragment(), View {
         refresh.isRefreshing = false
     }
 
-    override fun showPosts(posts: List<DisplayableItem<Post>>) {
+    override fun showPosts(posts: List<DisplayableItem<PostEntity>>) {
         adapter.update(posts.toMutableList())
     }
 
-    override fun viewPost(post: Post) = postSelected.onNext(post)
+    override fun viewPost(post: PostEntity) = postSelected.onNext(post)
 
     override fun onViewCreated(view: android.view.View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
