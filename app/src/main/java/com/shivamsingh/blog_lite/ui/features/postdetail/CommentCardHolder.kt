@@ -14,12 +14,12 @@ import com.aasaanjobs.partnerinternal.recyclerview.DisplayableItem
 import com.aasaanjobs.partnerinternal.recyclerview.ViewHolderBinder
 import com.aasaanjobs.partnerinternal.recyclerview.ViewHolderFactory
 import com.shivamsingh.blog_lite.R
-import com.shivamsingh.blog_lite.domain.model.Comment
+import com.shivamsingh.blog_lite.ui.model.CommentEntity
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
 
 class CommentCardHolder(itemView: View, val picasso: Picasso) : RecyclerView.ViewHolder(itemView) {
-    private lateinit var comment: Comment
+    private lateinit var comment: CommentEntity
 
     @BindView(R.id.pic)
     lateinit var pic: ImageView
@@ -30,10 +30,10 @@ class CommentCardHolder(itemView: View, val picasso: Picasso) : RecyclerView.Vie
     @BindView(R.id.comment)
     lateinit var commentBody: TextView
 
-    fun bind(comment: Comment) {
+    fun bind(comment: CommentEntity) {
         email.text = comment.email
         commentBody.text = comment.body
-//        picasso.load(post.authorPicUrl).into(pic)
+        picasso.load(comment.avatar).into(pic)
     }
 }
 
@@ -47,8 +47,8 @@ class CommentCardHolderFactory @Inject constructor(@ForApplication context: Cont
     }
 }
 
-class CommentCardHolderBinder @Inject constructor() : ViewHolderBinder<Comment> {
-    override fun bind(viewHolder: RecyclerView.ViewHolder, item: DisplayableItem<Comment>) {
+class CommentCardHolderBinder @Inject constructor() : ViewHolderBinder<CommentEntity> {
+    override fun bind(viewHolder: RecyclerView.ViewHolder, item: DisplayableItem<CommentEntity>) {
         (viewHolder as CommentCardHolder).bind(item.model)
     }
 }

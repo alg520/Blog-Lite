@@ -5,6 +5,7 @@ import com.shivamsingh.blog_lite.domain.model.Post
 import com.shivamsingh.blog_lite.ui.base.BasePresenter
 import com.shivamsingh.blog_lite.ui.base.BaseView
 import com.shivamsingh.blog_lite.ui.base.PresenterLifecycle
+import com.shivamsingh.blog_lite.ui.model.PostEntity
 
 interface PostsContract {
 
@@ -12,13 +13,13 @@ interface PostsContract {
 
         fun fetchPosts()
 
-        fun onPostSelection(post: Post)
+        fun onPostSelection(post: PostEntity)
     }
 
     interface View : BaseView<Presenter> {
 
-        fun showPosts(posts: List<DisplayableItem<Post>>)
+        fun showPosts(posts: List<DisplayableItem<PostEntity>>)
 
-        fun viewPost(post: Post)
+        fun viewPost(post: PostEntity)
     }
 }

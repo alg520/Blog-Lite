@@ -13,17 +13,19 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/pic"
+        app:layout_constraintLeft_toRightOf="@id/pic"
+        app:layout_constraintStart_toEndOf="@id/pic"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/body"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
@@ -36,8 +38,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:ellipsize="end"
-        android:maxLines="3"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,6 +49,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="8dp"
         android:tint="@color/colorAccent"
+        app:layout_constraintRight_toLeftOf="@+id/comments_count"
         app:layout_constraintEnd_toStartOf="@id/comments_count"
         app:layout_constraintTop_toBottomOf="@+id/body"
         app:srcCompat="@drawable/ic_comment" />

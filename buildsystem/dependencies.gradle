@@ -8,7 +8,7 @@ ext {
     rxBinding = '2.1.1'
     archLifecycle = '1.1.0'
     supportLibrary = '26.0.0'
-    constraintLayout = '1.0.2'
+    constraintLayout = '1.1.0-beta5'
     dagger2 = '2.11'
     butterKnife = '8.8.1'
     javaxAnnotation = '10.0-b28'

@@ -15,16 +15,16 @@ import com.aasaanjobs.partnerinternal.recyclerview.DisplayableItem
 import com.aasaanjobs.partnerinternal.recyclerview.ViewHolderBinder
 import com.aasaanjobs.partnerinternal.recyclerview.ViewHolderFactory
 import com.shivamsingh.blog_lite.R
-import com.shivamsingh.blog_lite.domain.model.Post
+import com.shivamsingh.blog_lite.ui.model.PostEntity
 import com.squareup.picasso.Picasso
 import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 
 class PostCardHolder(itemView: View, val picasso: Picasso) : RecyclerView.ViewHolder(itemView) {
 
-    val postSelected = PublishSubject.create<Post>()
+    val postSelected = PublishSubject.create<PostEntity>()
 
-    private lateinit var post: Post
+    private lateinit var post: PostEntity
 
     @BindView(R.id.pic)
     lateinit var pic: ImageView
@@ -43,12 +43,12 @@ class PostCardHolder(itemView: View, val picasso: Picasso) : RecyclerView.ViewHo
         postSelected.onNext(post)
     }
 
-    fun bind(post: Post) {
+    fun bind(post: PostEntity) {
         this.post = post
         title.text = post.title
         body.text = post.body
         commentsCount.text = itemView.context.getString(R.string.comments_count).format(post.commentsCount)
-        picasso.load(post.authorPicUrl).into(pic)
+        picasso.load(post.avatar).into(pic)
     }
 }
 
@@ -62,8 +62,8 @@ class PostCardHolderFactory @Inject constructor(@ForApplication context: Context
     }
 }
 
-class PostCardHolderBinder @Inject constructor() : ViewHolderBinder<Post> {
-    override fun bind(viewHolder: RecyclerView.ViewHolder, item: DisplayableItem<Post>) {
+class PostCardHolderBinder @Inject constructor() : ViewHolderBinder<PostEntity> {
+    override fun bind(viewHolder: RecyclerView.ViewHolder, item: DisplayableItem<PostEntity>) {
         (viewHolder as PostCardHolder).bind(item.model)
     }
 }
