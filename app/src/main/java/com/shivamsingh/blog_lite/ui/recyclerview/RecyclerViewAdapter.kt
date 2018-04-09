@@ -24,12 +24,12 @@ class RecyclerViewAdapter<T>(val itemComparator: ItemComparator<T>,
     }
 
     override fun getItemViewType(position: Int): Int {
-        return items.get(position).tyoe
+        return items.get(position).type
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         val item = items.get(position)
-        holder?.let { binderMap.get(item.tyoe)?.bind(it, item) }
+        holder?.let { binderMap.get(item.type)?.bind(it, item) }
     }
 
     fun update(items: MutableList<DisplayableItem<T>>) {

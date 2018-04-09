@@ -6,6 +6,7 @@ import com.shivamsingh.blog_lite.platform.extensions.mapToDisplayableItems
 import com.shivamsingh.blog_lite.ui.base.AbstractPresenter
 import com.shivamsingh.blog_lite.ui.features.posts.PostsContract.Presenter
 import com.shivamsingh.blog_lite.ui.features.posts.PostsContract.View
+import com.shivamsingh.blog_lite.ui.features.posts.module.PostsListModule.Companion.POST_ITEM
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -23,8 +24,12 @@ class PostsPresenter @Inject constructor(val fetchPostsUseCase: FetchPostsUseCas
     }
 
     private fun showPosts(posts: List<Post>) {
-        view?.showPosts(mapToDisplayableItems(posts))
+        view?.showPosts(mapToDisplayableItems(POST_ITEM, posts))
         view?.hideLoading()
+    }
+
+    override fun onPostSelection(post: Post) {
+        view?.viewPost(post)
     }
 
     private fun fetchingPostsFailed(exception: Throwable) {

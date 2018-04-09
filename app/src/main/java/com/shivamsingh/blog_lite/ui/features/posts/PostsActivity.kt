@@ -14,13 +14,18 @@ class PostsActivity : BaseActivity() {
 
     override fun layoutRes() = R.layout.activity_container
 
-
     override fun afterViews(savedInstanceState: Bundle?) {
         toolbar.setTitle(R.string.posts_title)
         showPosts()
     }
 
     private fun showPosts() {
-        setScreen(R.id.frame, PostsFragment.instance())
+        val postsFragment = PostsFragment.instance()
+        observePostsFragmentEvents(postsFragment)
+        setScreen(R.id.frame, postsFragment)
+    }
+
+    private fun observePostsFragmentEvents(postsFragment: PostsFragment) {
+        postsFragment.postSelected.subscribe { navigator.navigateToPostDetail(this, it) }
     }
 }

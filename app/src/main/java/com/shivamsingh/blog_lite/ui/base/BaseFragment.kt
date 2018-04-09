@@ -21,4 +21,10 @@ abstract class BaseFragment : DaggerFragment() {
         super.onViewCreated(view, savedInstanceState)
         ButterKnife.bind(this, view)
     }
+
+    open fun showLoading() {
+    }
+
+    open fun hideLoading() {
+    }
 }
