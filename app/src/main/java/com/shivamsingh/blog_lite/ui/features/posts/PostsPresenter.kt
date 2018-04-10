@@ -12,8 +12,8 @@ import com.shivamsingh.blog_lite.ui.model.PostEntity
 import timber.log.Timber
 import javax.inject.Inject
 
-class PostsPresenter @Inject constructor(val fetchPostsUseCase: FetchPostsUseCase,
-                                         val postMapper: PostMapper) : AbstractPresenter(), Presenter {
+class PostsPresenter @Inject constructor(private val fetchPostsUseCase: FetchPostsUseCase,
+                                         private val postMapper: PostMapper) : AbstractPresenter(), Presenter {
     private var view: View? = null
 
     override fun takeView(view: View) {
