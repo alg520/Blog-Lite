@@ -54,7 +54,7 @@ class PostDetailFragment : BaseFragment(), View {
     }
 
     private fun init() {
-        val post = arguments.getSerializable(POST) as PostEntity
+        val post = arguments.getParcelable(POST) as PostEntity
         bind(post)
         presenter.fetchComments(post.id)
         configureRecyclerView()
