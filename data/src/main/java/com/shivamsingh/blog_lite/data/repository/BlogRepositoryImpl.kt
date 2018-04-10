@@ -12,15 +12,14 @@ import com.shivamsingh.blog_lite.domain.model.Post
 import com.shivamsingh.blog_lite.domain.repository.BlogRepository
 import io.reactivex.Observable
 import io.reactivex.Single
-import io.reactivex.functions.BiFunction
+import io.reactivex.functions.Function3
 
 class BlogRepositoryImpl constructor(private val remoteSource: BlogRemoteSource,
                                      private val postMapper: PostMapper,
                                      private val commentMapper: CommentMapper) : BlogRepository {
 
     override fun posts(): Single<List<Post>> {
-
-        return blogDatabse()
+        return blogDatabase()
                 .map { postMapper.map(it) }
     }
 
@@ -34,10 +33,17 @@ class BlogRepositoryImpl constructor(private val remoteSource: BlogRemoteSource,
 
     }
 
-    private fun blogDatabse(): Single<BlogDatabase> {
-        return Single.just(BlogDatabase())
-                .zipWith(remoteSource.posts(), BiFunction<BlogDatabase, List<PostDto>, BlogDatabase> { t1, t2 -> t1.also { t1.posts = t2 } })
-                .zipWith(remoteSource.users(), BiFunction<BlogDatabase, List<UserDto>, BlogDatabase> { t1, t2 -> t1.also { t1.users = t2 } })
-                .zipWith(remoteSource.comments(), BiFunction<BlogDatabase, List<CommentDto>, BlogDatabase> { t1, t2 -> t1.also { t1.comments = t2 } })
+    private fun blogDatabase(): Single<BlogDatabase> {
+        return Single.zip(
+                remoteSource.posts(),
+                remoteSource.users(),
+                remoteSource.comments(),
+                createBlogDatabase())
+    }
+
+    private fun createBlogDatabase(): Function3<List<PostDto>, List<UserDto>, List<CommentDto>, BlogDatabase> {
+        return Function3<List<PostDto>, List<UserDto>, List<CommentDto>, BlogDatabase> { posts, users, comments ->
+            BlogDatabase(posts, users, comments)
+        }
     }
 }
