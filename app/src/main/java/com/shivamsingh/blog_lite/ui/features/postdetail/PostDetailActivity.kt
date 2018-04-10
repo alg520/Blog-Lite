@@ -17,7 +17,7 @@ class PostDetailActivity : BaseActivity() {
     override fun layoutRes() = R.layout.activity_container
 
     override fun afterViews(savedInstanceState: Bundle?) {
-        val post = intent.getSerializableExtra(POST) as PostEntity
+        val post = intent.getParcelableExtra(POST) as PostEntity
         showPostDetail(post)
         setupToolbar(post)
     }
@@ -30,7 +30,7 @@ class PostDetailActivity : BaseActivity() {
 
     private fun bundle(post: PostEntity): Bundle {
         val bundle = Bundle()
-        bundle.putSerializable(PostDetailFragment.POST, post)
+        bundle.putParcelable(PostDetailFragment.POST, post)
         return bundle
     }
 
