@@ -47,10 +47,10 @@ class CommentDisplayableItemMapperTest : BaseTest() {
         `when`(commentMapper.map(comment)).thenReturn(commentEntity)
 
         // When
-        val displayableItem = commentDisplayableItemMapper.map(comment)
-        val expectedDisplayableItem = toDisplayableItem(commentEntity, COMMENT_ITEM)
+        val displayableComment = commentDisplayableItemMapper.map(comment)
+        val expectedDisplayableComment = toDisplayableItem(commentEntity, COMMENT_ITEM)
 
         // Then
-        assertThat(displayableItem).isEqualTo(expectedDisplayableItem)
+        assertThat(displayableComment).isEqualTo(expectedDisplayableComment)
     }
 }
