@@ -4,6 +4,7 @@ import com.aasaanjobs.partnerinternal.recyclerview.ItemComparator
 import com.aasaanjobs.partnerinternal.recyclerview.RecyclerViewAdapter
 import com.aasaanjobs.partnerinternal.recyclerview.ViewHolderBinder
 import com.aasaanjobs.partnerinternal.recyclerview.ViewHolderFactory
+import com.shivamsingh.blog_lite.ui.features.POST_ITEM
 import com.shivamsingh.blog_lite.ui.features.posts.PostCardHolderBinder
 import com.shivamsingh.blog_lite.ui.features.posts.PostCardHolderFactory
 import com.shivamsingh.blog_lite.ui.features.posts.PostItemComparator
@@ -19,8 +20,6 @@ abstract class PostsListModule {
 
     @Module
     companion object {
-        const val POST_ITEM = 0
-
         @Provides
         @JvmStatic
         fun provideComparator(): ItemComparator<PostEntity> = PostItemComparator()
