@@ -27,6 +27,7 @@ ext {
     // Testing
     junit = '4.12'
     mockito = '2.8.9'
+    mockitoKotlin = '1.5.0'
     assertJ = '3.8.0'
 
     commonDependencies = [
@@ -81,10 +82,11 @@ ext {
     ]
 
     commonTestDependencies = [
-            junit   : "junit:junit:${junit}",
-            assertj : "org.assertj:assertj-core:${assertJ}",
-            mockito : "org.mockito:mockito-core:${mockito}",
-            archTest: "android.arch.core:core-testing:${archLifecycle}"
+            junit           : "junit:junit:${junit}",
+            assertj         : "org.assertj:assertj-core:${assertJ}",
+            mockito         : "org.mockito:mockito-core:${mockito}",
+            mockitoKotlin   : "com.nhaarman:mockito-kotlin:${mockitoKotlin}",
+            archTest        : "android.arch.core:core-testing:${archLifecycle}"
     ]
 
     developmentDependencies = [

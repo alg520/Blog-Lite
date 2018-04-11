@@ -2,18 +2,16 @@ package com.shivamsingh.blog_lite.ui.features.posts
 
 import com.shivamsingh.blog_lite.domain.model.Post
 import com.shivamsingh.blog_lite.domain.usecase.FetchPostsUseCase
-import com.shivamsingh.blog_lite.platform.extensions.mapToDisplayableItems
 import com.shivamsingh.blog_lite.ui.base.AbstractPresenter
 import com.shivamsingh.blog_lite.ui.features.posts.PostsContract.Presenter
 import com.shivamsingh.blog_lite.ui.features.posts.PostsContract.View
-import com.shivamsingh.blog_lite.ui.features.posts.module.PostsListModule.Companion.POST_ITEM
-import com.shivamsingh.blog_lite.ui.mapper.PostMapper
+import com.shivamsingh.blog_lite.ui.mapper.PostDisplayableItemMapper
 import com.shivamsingh.blog_lite.ui.model.PostEntity
 import timber.log.Timber
 import javax.inject.Inject
 
 class PostsPresenter @Inject constructor(private val fetchPostsUseCase: FetchPostsUseCase,
-                                         private val postMapper: PostMapper) : AbstractPresenter(), Presenter {
+                                         private val postDisplayableItemMapper: PostDisplayableItemMapper) : AbstractPresenter(), Presenter {
     private var view: View? = null
 
     override fun takeView(view: View) {
@@ -27,7 +25,7 @@ class PostsPresenter @Inject constructor(private val fetchPostsUseCase: FetchPos
     }
 
     private fun showPosts(posts: List<Post>) {
-        view?.showPosts(mapToDisplayableItems(POST_ITEM, postMapper.map(posts)))
+        view?.showPosts(postDisplayableItemMapper.map(posts))
         view?.hideLoading()
     }
 
@@ -38,5 +36,6 @@ class PostsPresenter @Inject constructor(private val fetchPostsUseCase: FetchPos
     private fun fetchingPostsFailed(exception: Throwable) {
         Timber.e(exception)
         view?.hideLoading()
+        view?.showError(exception.message ?: "Something went wrong")
     }
 }

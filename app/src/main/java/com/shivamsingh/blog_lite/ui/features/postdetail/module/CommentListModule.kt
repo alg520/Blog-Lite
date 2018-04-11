@@ -4,6 +4,7 @@ import com.aasaanjobs.partnerinternal.recyclerview.ItemComparator
 import com.aasaanjobs.partnerinternal.recyclerview.RecyclerViewAdapter
 import com.aasaanjobs.partnerinternal.recyclerview.ViewHolderBinder
 import com.aasaanjobs.partnerinternal.recyclerview.ViewHolderFactory
+import com.shivamsingh.blog_lite.ui.features.COMMENT_ITEM
 import com.shivamsingh.blog_lite.ui.features.postdetail.CommentCardHolderBinder
 import com.shivamsingh.blog_lite.ui.features.postdetail.CommentCardHolderFactory
 import com.shivamsingh.blog_lite.ui.features.postdetail.CommentItemComparator
@@ -19,8 +20,6 @@ abstract class CommentListModule {
 
     @Module
     companion object {
-        const val COMMENT_ITEM = 1
-
         @Provides
         @JvmStatic
         fun provideComparator(): ItemComparator<CommentEntity> = CommentItemComparator()

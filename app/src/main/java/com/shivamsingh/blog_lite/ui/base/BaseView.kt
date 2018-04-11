@@ -7,4 +7,6 @@ interface BaseView<in Presenter> {
     fun showLoading()
 
     fun hideLoading()
+
+    fun showError(message: String)
 }
