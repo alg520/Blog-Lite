@@ -38,26 +38,26 @@ class PostsPresenterTest : BaseTest() {
     fun `fetch posts should call show posts on view when success callback invoked`() {
         // Arrange
         val posts = singletonList(mock(Post::class.java))
-        val displayableItems = singletonList(mock(DisplayableItem::class.java))
+        val displayablePosts = singletonList(mock(DisplayableItem::class.java))
 
-        val postsCallback: (List<Post>) -> Unit = com.nhaarman.mockito_kotlin.mock { }
+        val successCallback: (List<Post>) -> Unit = com.nhaarman.mockito_kotlin.mock { }
 
-        `when`(postDisplayableItemMapper.map(posts)).thenReturn(displayableItems as List<DisplayableItem<PostEntity>>)
-        doReturn(postsPresenter.showPosts(posts)).`when`(postsCallback).invoke(posts)
-        `when`(fetchPostsUseCase.execute(any(), any(), any())).then { postsCallback.invoke(posts) }
+        `when`(postDisplayableItemMapper.map(posts)).thenReturn(displayablePosts as List<DisplayableItem<PostEntity>>)
+        doReturn(postsPresenter.showPosts(posts)).`when`(successCallback).invoke(posts)
+        `when`(fetchPostsUseCase.execute(any(), any(), any())).then { successCallback.invoke(posts) }
 
         // When
         postsPresenter.fetchPosts()
 
         // Then
         verify(view).showLoading()
-        verify(view).showPosts(displayableItems)
+        verify(view).showPosts(displayablePosts)
         verify(view).hideLoading()
         verifyNoMoreInteractions(view)
     }
 
     @Test
-    fun `fetch posts should call show fetching failed on view when error callback invoked`() {
+    fun `fetch posts should call fetching posts failed on view when error callback invoked`() {
         // Arrange
         val throwable = mock(Throwable::class.java)
         val errorCallback: (Throwable) -> Unit = com.nhaarman.mockito_kotlin.mock { }

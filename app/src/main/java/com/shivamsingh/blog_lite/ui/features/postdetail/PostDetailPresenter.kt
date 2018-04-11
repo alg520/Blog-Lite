@@ -18,16 +18,18 @@ class PostDetailPresenter @Inject constructor(private val fetchCommentsUseCase: 
     }
 
     override fun fetchComments(postId: Int) {
+        view?.showLoading()
         fetchCommentsUseCase.execute({ showComments(it) }, { fetchingCommentsFailed(it) }, postId)
     }
 
-    private fun showComments(comments: List<Comment>) {
+    fun showComments(comments: List<Comment>) {
         view?.showComments(commentDisplayableItemMapper.map(comments))
         view?.hideLoading()
     }
 
-    private fun fetchingCommentsFailed(exception: Throwable) {
+    fun fetchingCommentsFailed(exception: Throwable) {
         Timber.e(exception)
+        view?.showFetchCommentsFailed()
         view?.hideLoading()
     }
 }

@@ -15,6 +15,7 @@ import com.shivamsingh.blog_lite.ui.model.CommentEntity
 import com.shivamsingh.blog_lite.ui.model.PostEntity
 import com.squareup.picasso.Picasso
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
+import timber.log.Timber
 import javax.inject.Inject
 
 class PostDetailFragment : BaseFragment(), View {
@@ -58,6 +59,11 @@ class PostDetailFragment : BaseFragment(), View {
         bind(post)
         presenter.fetchComments(post.id)
         configureRecyclerView()
+    }
+
+    override fun showFetchCommentsFailed() {
+        Timber.v("Showing fetch comments failure message.");
+        showMessage(R.string.fetch_commetns_failed)
     }
 
     private fun bind(post: PostEntity) {
