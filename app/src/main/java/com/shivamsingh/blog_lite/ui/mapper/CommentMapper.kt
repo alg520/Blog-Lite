@@ -11,6 +11,6 @@ class CommentMapper @Inject constructor(@Named(AVATAR_URL_WITH_EMAIL_PLACEHOLDER
     : Mapper<CommentEntity, Comment>() {
 
     override fun map(comment: Comment): CommentEntity {
-        return CommentEntity(comment.id, comment.name, comment.email, avatarUrlWithEmailPlaceHolder.format(comment.email), comment.body)
+        return CommentEntity(comment.id, comment.postId, comment.name, comment.email, avatarUrlWithEmailPlaceHolder.format(comment.email), comment.body)
     }
 }

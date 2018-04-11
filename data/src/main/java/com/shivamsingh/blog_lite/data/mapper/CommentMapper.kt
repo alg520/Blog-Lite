@@ -7,5 +7,5 @@ import javax.inject.Inject
 
 class CommentMapper @Inject constructor() : Mapper<Comment, CommentDto>() {
 
-    override fun map(from: CommentDto): Comment = Comment(from.id, from.name, from.email, from.body)
+    override fun map(commentDto: CommentDto): Comment = Comment(commentDto.id, commentDto.postId, commentDto.name, commentDto.email, commentDto.body)
 }
