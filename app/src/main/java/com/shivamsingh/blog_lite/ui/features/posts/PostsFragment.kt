@@ -7,13 +7,13 @@ import butterknife.BindView
 import com.aasaanjobs.partnerinternal.recyclerview.DisplayableItem
 import com.aasaanjobs.partnerinternal.recyclerview.RecyclerViewAdapter
 import com.shivamsingh.blog_lite.R
-import com.shivamsingh.blog_lite.domain.model.Post
 import com.shivamsingh.blog_lite.ui.base.BaseFragment
 import com.shivamsingh.blog_lite.ui.features.posts.PostsContract.Presenter
 import com.shivamsingh.blog_lite.ui.features.posts.PostsContract.View
 import com.shivamsingh.blog_lite.ui.model.PostEntity
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import io.reactivex.subjects.PublishSubject
+import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -36,6 +36,11 @@ class PostsFragment : BaseFragment(), View {
     override fun attachPresenter(presenter: Presenter) {
         this.presenter = presenter
         this.presenter.takeView(this)
+    }
+
+    override fun showFetchingFailed() {
+        Timber.v("Showing fetch posts failure layouts.");
+        showMessage(R.string.fetch_posts_failed)
     }
 
     override fun showLoading() {

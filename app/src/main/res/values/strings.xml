@@ -2,4 +2,5 @@
     <string name="app_name">Blog-Lite</string>
     <string name="comments_count">%d comments</string>
     <string name="posts_title">Blog-Lite Posts</string>
+    <string name="fetch_posts_failed">Unable to load posts.</string>
 </resources>

@@ -20,6 +20,8 @@ interface PostsContract {
 
         fun showPosts(posts: List<DisplayableItem<PostEntity>>)
 
+        fun showFetchingFailed()
+
         fun viewPost(post: PostEntity)
     }
 }

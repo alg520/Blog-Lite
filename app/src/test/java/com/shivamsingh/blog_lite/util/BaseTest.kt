@@ -4,13 +4,16 @@ import org.junit.Rule
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnit
 import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.quality.Strictness
 
-@RunWith(MockitoJUnitRunner.StrictStubs::class)
+@RunWith(MockitoJUnitRunner::class)
 abstract class BaseTest {
 
-    @get:Rule
-    val mockitoRule = MockitoJUnit.rule()
+    @JvmField
+    @Rule
+    val mockitoRule = MockitoJUnit.rule().strictness(Strictness.WARN)
 
-    @get:Rule
+    @JvmField
+    @Rule
     val overrideSchedulersRule = RxSchedulerOverrideRule()
 }

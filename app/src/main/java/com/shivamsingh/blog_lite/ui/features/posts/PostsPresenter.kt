@@ -19,23 +19,23 @@ class PostsPresenter @Inject constructor(private val fetchPostsUseCase: FetchPos
         disposables.add(fetchPostsUseCase)
     }
 
+    override fun onPostSelection(post: PostEntity) {
+        view?.viewPost(post)
+    }
+
     override fun fetchPosts() {
         view?.showLoading()
         fetchPostsUseCase.execute({ showPosts(it) }, { fetchingPostsFailed(it) }, Unit)
     }
 
-    private fun showPosts(posts: List<Post>) {
+    fun showPosts(posts: List<Post>) {
         view?.showPosts(postDisplayableItemMapper.map(posts))
         view?.hideLoading()
     }
 
-    override fun onPostSelection(post: PostEntity) {
-        view?.viewPost(post)
-    }
-
-    private fun fetchingPostsFailed(exception: Throwable) {
+    fun fetchingPostsFailed(exception: Throwable) {
         Timber.e(exception)
+        view?.showFetchingFailed()
         view?.hideLoading()
-        view?.showError(exception.message ?: "Something went wrong")
     }
 }
