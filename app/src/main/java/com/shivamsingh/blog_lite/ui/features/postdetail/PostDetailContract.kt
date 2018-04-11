@@ -15,5 +15,7 @@ interface PostDetailContract {
     interface View : BaseView<Presenter> {
 
         fun showComments(comments: List<DisplayableItem<CommentEntity>>)
+
+        fun showFetchCommentsFailed()
     }
 }

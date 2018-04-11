@@ -3,4 +3,5 @@
     <string name="comments_count">%d comments</string>
     <string name="posts_title">Blog-Lite Posts</string>
     <string name="fetch_posts_failed">Unable to load posts.</string>
+    <string name="fetch_commetns_failed">Unable to load comments.</string>
 </resources>
