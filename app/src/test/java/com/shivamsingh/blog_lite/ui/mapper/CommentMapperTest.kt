@@ -20,11 +20,12 @@ class CommentMapperTest : BaseTest() {
     fun `comment should get mapped to comment entity with avatar`() {
         // Arrange
         val id = 1
+        val postId = 1
         val name = "shivam"
         val email = "shvmsngh91@gmail.com"
         val body = "some test comment"
 
-        val comment = Comment(id, name, email, body)
+        val comment = Comment(id, postId, name, email, body)
 
         // When
         val commentEntity = commentMapper.map(comment)
@@ -32,6 +33,7 @@ class CommentMapperTest : BaseTest() {
         // Then
 
         assertThat(commentEntity.id).isEqualTo(id)
+        assertThat(commentEntity.postId).isEqualTo(name)
         assertThat(commentEntity.name).isEqualTo(name)
         assertThat(commentEntity.email).isEqualTo(email)
         assertThat(commentEntity.body).isEqualTo(body)
