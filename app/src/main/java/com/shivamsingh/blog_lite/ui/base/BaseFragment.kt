@@ -32,4 +32,12 @@ abstract class BaseFragment : DaggerFragment() {
     open fun showError(message: String) {
         Toast.makeText(activity, message, Toast.LENGTH_LONG).show()
     }
+
+    fun showMessage(res: Int) {
+        Toast.makeText(context, res, Toast.LENGTH_LONG).show()
+    }
+
+    fun showMessage(message: String) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+    }
 }
