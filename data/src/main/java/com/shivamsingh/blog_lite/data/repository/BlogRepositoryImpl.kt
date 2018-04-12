@@ -4,9 +4,6 @@ import com.shivamsingh.blog_lite.data.BlogDatabase
 import com.shivamsingh.blog_lite.data.mapper.CommentMapper
 import com.shivamsingh.blog_lite.data.mapper.PostMapper
 import com.shivamsingh.blog_lite.data.source.BlogRemoteSource
-import com.shivamsingh.blog_lite.data.source.remote.dto.CommentDto
-import com.shivamsingh.blog_lite.data.source.remote.dto.PostDto
-import com.shivamsingh.blog_lite.data.source.remote.dto.UserDto
 import com.shivamsingh.blog_lite.domain.model.Comment
 import com.shivamsingh.blog_lite.domain.model.Post
 import com.shivamsingh.blog_lite.domain.repository.BlogRepository
@@ -38,12 +35,6 @@ class BlogRepositoryImpl constructor(private val remoteSource: BlogRemoteSource,
                 remoteSource.posts(),
                 remoteSource.users(),
                 remoteSource.comments(),
-                createBlogDatabase())
-    }
-
-    private fun createBlogDatabase(): Function3<List<PostDto>, List<UserDto>, List<CommentDto>, BlogDatabase> {
-        return Function3<List<PostDto>, List<UserDto>, List<CommentDto>, BlogDatabase> { posts, users, comments ->
-            BlogDatabase(posts, users, comments)
-        }
+                Function3(::BlogDatabase))
     }
 }
