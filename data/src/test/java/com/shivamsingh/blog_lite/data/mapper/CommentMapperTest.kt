@@ -24,15 +24,14 @@ class CommentMapperTest : BaseTest() {
         val email = "shvmsngh91@gmail.com"
         val body = "some test comment"
         val commentDto = CommentDto(id, postId, name, email, body)
-        // When
 
+        // When
         val comment = commentMapper.map(commentDto)
 
         // Then
-
         assertThat(comment.id).isEqualTo(id)
         assertThat(comment.postId).isEqualTo(postId)
-        assertThat(comment.body).isEqualTo(name)
+        assertThat(comment.name).isEqualTo(name)
         assertThat(comment.email).isEqualTo(email)
         assertThat(comment.body).isEqualTo(body)
     }

@@ -33,7 +33,7 @@ class CommentMapperTest : BaseTest() {
         // Then
 
         assertThat(commentEntity.id).isEqualTo(id)
-        assertThat(commentEntity.postId).isEqualTo(name)
+        assertThat(commentEntity.postId).isEqualTo(postId)
         assertThat(commentEntity.name).isEqualTo(name)
         assertThat(commentEntity.email).isEqualTo(email)
         assertThat(commentEntity.body).isEqualTo(body)
