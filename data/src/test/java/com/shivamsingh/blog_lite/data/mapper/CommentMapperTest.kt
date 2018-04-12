@@ -16,7 +16,7 @@ class CommentMapperTest : BaseTest() {
     }
 
     @Test
-    fun `comment dto from should get mapped to comment`() {
+    fun `comment dto from remote source should get mapped to comment`() {
         // Arrange
         val id = 1
         val postId = 1
