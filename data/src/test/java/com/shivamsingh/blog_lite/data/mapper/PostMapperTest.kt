@@ -5,6 +5,7 @@ import com.shivamsingh.blog_lite.data.source.remote.dto.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
+import org.mockito.Mockito.mock
 
 class PostMapperTest {
 
@@ -28,8 +29,8 @@ class PostMapperTest {
 
         val postDtos = listOf<PostDto>(PostDto(userId, postId, title, body))
         val userDtos = listOf<UserDto>(UserDto(userId, "shivam singh", "shvmsngh91",
-                email, addressDto(), "8108758799",
-                "https://github.com/shivamsingh", companyDto()))
+                email, mock(AddressDto::class.java), "8108758799",
+                "https://github.com/shivamsingh", mock(CompanyDto::class.java)))
         val commentDtos = listOf<CommentDto>(CommentDto(1, postId, "tirupati balan",
                 "tirupati17@gmail.com", "some test comment"))
         val blogDatabse = BlogDatabase(postDtos, userDtos, commentDtos)
@@ -59,8 +60,8 @@ class PostMapperTest {
 
         val postDtos = listOf<PostDto>(PostDto(3, postId, title, body))
         val userDtos = listOf<UserDto>(UserDto(userId, "shivam singh", "shvmsngh91",
-                email, addressDto(), "8108758799",
-                "https://github.com/shivamsingh", companyDto()))
+                email, mock(AddressDto::class.java), "8108758799",
+                "https://github.com/shivamsingh", mock(CompanyDto::class.java)))
         val commentDtos = listOf<CommentDto>(CommentDto(1, postId, "tirupati balan",
                 "tirupati17@gmail.com", "some test comment"))
         val blogDatabse = BlogDatabase(postDtos, userDtos, commentDtos)
@@ -81,7 +82,7 @@ class PostMapperTest {
     fun `comment count should be zero when no comment dto exist for post dto`() {
         // Arrange
 
-        // // Fields t verify
+        // // Fields to verify
         val userId = 1
         val postId = 2
         val title = "some post title"
@@ -90,8 +91,8 @@ class PostMapperTest {
 
         val postDtos = listOf<PostDto>(PostDto(userId, postId, title, body))
         val userDtos = listOf<UserDto>(UserDto(userId, "shivam singh", "shvmsngh91",
-                email, addressDto(), "8108758799",
-                "https://github.com/shivamsingh", companyDto()))
+                email, mock(AddressDto::class.java), "8108758799",
+                "https://github.com/shivamsingh", mock(CompanyDto::class.java)))
         val commentDtos = listOf<CommentDto>(CommentDto(1, 1, "tirupati balan",
                 "tirupati17@gmail.com", "some test comment"))
         val blogDatabse = BlogDatabase(postDtos, userDtos, commentDtos)
@@ -106,15 +107,5 @@ class PostMapperTest {
         assertThat(posts[0].body).isEqualTo(body)
         assertThat(posts[0].email).isEqualTo(email)
         assertThat(posts[0].commentsCount).isEqualTo(0)
-    }
-
-    // dummy address
-    private fun addressDto(): AddressDto {
-        return AddressDto("", "", "", "", GeoDto("", ""))
-    }
-
-    // dummy company
-    private fun companyDto(): CompanyDto {
-        return CompanyDto("", "", "")
     }
 }
