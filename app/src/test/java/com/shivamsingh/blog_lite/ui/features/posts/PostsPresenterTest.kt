@@ -74,4 +74,16 @@ class PostsPresenterTest : BaseTest() {
         verify(view).hideLoading()
         verifyNoMoreInteractions(view)
     }
+
+    @Test
+    fun `onpostselection should call viewpost on view with given post entity`() {
+        // Arrange
+        val postEntity = mock(PostEntity::class.java)
+
+        // When
+        postsPresenter.onPostSelection(postEntity)
+
+        // Then
+        verify(view).viewPost(postEntity)
+    }
 }
