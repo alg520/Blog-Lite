@@ -29,6 +29,11 @@ dependencies {
     implementation commonDependencies.kotlin
     implementation commonDependencies.kotlinReflection
 
+    // Architecture components
+    implementation commonDependencies.room
+    implementation commonDependencies.roomRxJava
+    kapt commonDependencies.roomCompiler
+
     // RxJava 2
     implementation commonDependencies.rxJava2
     implementation commonDependencies.rxAndroid
@@ -54,7 +59,4 @@ dependencies {
     testImplementation commonTestDependencies.assertj
     testImplementation commonTestDependencies.mockito
     testImplementation commonTestDependencies.mockitoKotlin
-}
-repositories {
-    mavenCentral()
 }
