@@ -14,10 +14,10 @@ import dagger.android.support.DaggerApplication
 
 @PerApplication
 @Component(modules = [
-    (ActivityBindingModule::class),
-    (ApplicationModule::class),
-    (NetworkModule::class),
-    (AndroidSupportInjectionModule::class)
+    ActivityBindingModule::class,
+    ApplicationModule::class,
+    NetworkModule::class,
+    AndroidSupportInjectionModule::class
 ])
 interface AppComponent : AndroidInjector<DaggerApplication> {
 
