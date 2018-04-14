@@ -1,2 +1,2 @@
 # Blog-Lite
-A simple blog application with posts/comments and user detail demonstrating MVP clean architecture in Kotlin.
+A simple inMemoryBlog application with posts/comments and user detail demonstrating MVP clean architecture in Kotlin.

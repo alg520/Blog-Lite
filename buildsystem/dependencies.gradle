@@ -6,8 +6,8 @@ ext {
     rxKotlin = '2.2.0'
     rxAndroid = '2.0.1'
     rxBinding = '2.1.1'
-    archLifecycle = '1.1.0'
-    supportLibrary = '26.0.0'
+    archComponents = '1.0.0'
+    supportLibrary = '26.1.0'
     constraintLayout = '1.1.0-beta5'
     dagger2 = '2.11'
     butterKnife = '8.8.1'
@@ -71,10 +71,9 @@ ext {
 
             timber                      : "com.jakewharton.timber:timber:${timber}",
 
-            archLifecycleRuntime        : "android.arch.lifecycle:runtime:${archLifecycle}",
-            archLifecycleExtensions     : "android.arch.lifecycle:extensions:${archLifecycle}",
-            archLifecycleReactiveStreams: "android.arch.lifecycle:reactivestreams:${archLifecycle}",
-            archLifecycleCompiler       : "android.arch.lifecycle:compiler:${archLifecycle}",
+            room                        : "android.arch.persistence.room:runtime:$archComponents",
+            roomRxJava                  : "android.arch.persistence.room:rxjava2:$archComponents",
+            roomCompiler                : "android.arch.persistence.room:compiler:$archComponents",
 
             recyclerDivider             : "com.yqritc:recyclerview-flexibledivider:$recyclerDivider",
 
@@ -82,21 +81,20 @@ ext {
     ]
 
     commonTestDependencies = [
-            junit           : "junit:junit:${junit}",
-            assertj         : "org.assertj:assertj-core:${assertJ}",
-            mockito         : "org.mockito:mockito-core:${mockito}",
-            mockitoKotlin   : "com.nhaarman:mockito-kotlin:${mockitoKotlin}",
-            archTest        : "android.arch.core:core-testing:${archLifecycle}"
+            junit                       : "junit:junit:${junit}",
+            assertj                     : "org.assertj:assertj-core:${assertJ}",
+            mockito                     : "org.mockito:mockito-core:${mockito}",
+            mockitoKotlin               : "com.nhaarman:mockito-kotlin:${mockitoKotlin}",
     ]
 
     developmentDependencies = [
-            leakcanary    : "com.squareup.leakcanary:leakcanary-android:${leakCanary}",
-            leakcanaryNoOp: "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanary}",
+            leakcanary                  : "com.squareup.leakcanary:leakcanary-android:${leakCanary}",
+            leakcanaryNoOp              : "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanary}",
 
-            stetho        : "com.facebook.stetho:stetho:${stetho}",
-            stethoOkHttp  : "com.facebook.stetho:stetho-okhttp3:${stetho}",
+            stetho                      : "com.facebook.stetho:stetho:${stetho}",
+            stethoOkHttp                : "com.facebook.stetho:stetho-okhttp3:${stetho}",
 
-            chuck         : "com.readystatesoftware.chuck:library:${chuck}",
-            chuckNoOp     : "com.readystatesoftware.chuck:library-no-op:${chuck}"
+            chuck                       : "com.readystatesoftware.chuck:library:${chuck}",
+            chuckNoOp                   : "com.readystatesoftware.chuck:library-no-op:${chuck}"
     ]
 }
