@@ -1,7 +1,7 @@
 package com.shivamsingh.blog_lite.data.mapper
 
-import com.shivamsingh.blog_lite.data.BlogDatabase
-import com.shivamsingh.blog_lite.data.source.remote.dto.*
+import com.shivamsingh.blog_lite.data.InMemoryBlogDatabase
+import com.shivamsingh.blog_lite.data.source.dto.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
@@ -33,7 +33,7 @@ class PostMapperTest {
                 "https://github.com/shivamsingh", mock(CompanyDto::class.java)))
         val commentDtos = listOf<CommentDto>(CommentDto(1, postId, "tirupati balan",
                 "tirupati17@gmail.com", "some test comment"))
-        val blogDatabse = BlogDatabase(postDtos, userDtos, commentDtos)
+        val blogDatabse = InMemoryBlogDatabase(postDtos, userDtos, commentDtos)
 
         // When
         val posts = postMapper.map(blogDatabse)
@@ -64,7 +64,7 @@ class PostMapperTest {
                 "https://github.com/shivamsingh", mock(CompanyDto::class.java)))
         val commentDtos = listOf<CommentDto>(CommentDto(1, postId, "tirupati balan",
                 "tirupati17@gmail.com", "some test comment"))
-        val blogDatabse = BlogDatabase(postDtos, userDtos, commentDtos)
+        val blogDatabse = InMemoryBlogDatabase(postDtos, userDtos, commentDtos)
 
         // When
         val posts = postMapper.map(blogDatabse)
@@ -95,7 +95,7 @@ class PostMapperTest {
                 "https://github.com/shivamsingh", mock(CompanyDto::class.java)))
         val commentDtos = listOf<CommentDto>(CommentDto(1, 1, "tirupati balan",
                 "tirupati17@gmail.com", "some test comment"))
-        val blogDatabse = BlogDatabase(postDtos, userDtos, commentDtos)
+        val blogDatabse = InMemoryBlogDatabase(postDtos, userDtos, commentDtos)
 
         // When
         val posts = postMapper.map(blogDatabse)

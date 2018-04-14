@@ -1,13 +1,13 @@
 package com.shivamsingh.blog_lite.data.repository
 
 import com.nhaarman.mockito_kotlin.verify
-import com.shivamsingh.blog_lite.data.BlogDatabase
+import com.shivamsingh.blog_lite.data.InMemoryBlogDatabase
 import com.shivamsingh.blog_lite.data.mapper.CommentMapper
 import com.shivamsingh.blog_lite.data.mapper.PostMapper
 import com.shivamsingh.blog_lite.data.source.BlogRemoteSource
-import com.shivamsingh.blog_lite.data.source.remote.dto.CommentDto
-import com.shivamsingh.blog_lite.data.source.remote.dto.PostDto
-import com.shivamsingh.blog_lite.data.source.remote.dto.UserDto
+import com.shivamsingh.blog_lite.data.source.dto.CommentDto
+import com.shivamsingh.blog_lite.data.source.dto.PostDto
+import com.shivamsingh.blog_lite.data.source.dto.UserDto
 import com.shivamsingh.blog_lite.domain.model.Comment
 import com.shivamsingh.blog_lite.domain.model.Post
 import com.shivamsingh.blog_lite.util.BaseTest
@@ -47,7 +47,7 @@ class BlogRepositoryImplTest : BaseTest() {
         val commentDtosSingle = Single.just(commentDtos)
 
         val posts = singletonList(mock(Post::class.java))
-        val blogDatabase = BlogDatabase(postDtos, userDtos, commentDtos)
+        val blogDatabase = InMemoryBlogDatabase(postDtos, userDtos, commentDtos)
 
         `when`(postMapper.map(blogDatabase)).thenReturn(posts)
         `when`(remoteSource.posts()).thenReturn(postDtosSingle)
