@@ -1,8 +1,8 @@
 package com.shivamsingh.blog_lite.data.source
 
-import com.shivamsingh.blog_lite.data.source.remote.dto.CommentDto
-import com.shivamsingh.blog_lite.data.source.remote.dto.PostDto
-import com.shivamsingh.blog_lite.data.source.remote.dto.UserDto
+import com.shivamsingh.blog_lite.data.source.dto.CommentDto
+import com.shivamsingh.blog_lite.data.source.dto.PostDto
+import com.shivamsingh.blog_lite.data.source.dto.UserDto
 import io.reactivex.Single
 
 interface BlogRemoteSource {
