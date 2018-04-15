@@ -19,6 +19,8 @@ android {
 
         buildConfigField "String", "API_ENDPOINT", live_endpoint_url
         buildConfigField "String", "AVATAR_ENDPOINT", avatar_endpoint_url
+        buildConfigField "String", "DATABASE_NAME", database_name
+        buildConfigField "int", "DATABASE_VERSION", database_version
     }
 
     buildTypes {
@@ -59,6 +61,11 @@ dependencies {
     implementation commonDependencies.dagger2Android
     kapt commonDependencies.dagger2AndroidCompiler
     compileOnly commonDependencies.javaxAnnotation
+
+    // Architecture components
+    implementation commonDependencies.room
+    implementation commonDependencies.roomRxJava
+    kapt commonDependencies.roomCompiler
 
     // ButterKnife
     implementation commonDependencies.butterKnife

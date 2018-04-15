@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
 import javax.inject.Qualifier
 
-@Module(includes = [(InstrumentationModule::class), (RxModule::class)])
+@Module(includes = [InstrumentationModule::class, RxModule::class])
 class NetworkModule {
     companion object {
         const val API_BASE_URL = "API_BASE_URL"

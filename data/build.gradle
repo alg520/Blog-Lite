@@ -12,6 +12,8 @@ android {
         minSdkVersion conf.minSdkVersion
         targetSdkVersion conf.targetSdkVersion
         versionCode conf.versionCode
+
+        buildConfigField "int", "DATABASE_VERSION", database_version
     }
 
     buildTypes {
@@ -28,6 +30,11 @@ dependencies {
 
     implementation commonDependencies.kotlin
     implementation commonDependencies.kotlinReflection
+
+    // Architecture components
+    implementation commonDependencies.room
+    implementation commonDependencies.roomRxJava
+    kapt commonDependencies.roomCompiler
 
     // RxJava 2
     implementation commonDependencies.rxJava2
@@ -54,7 +61,4 @@ dependencies {
     testImplementation commonTestDependencies.assertj
     testImplementation commonTestDependencies.mockito
     testImplementation commonTestDependencies.mockitoKotlin
-}
-repositories {
-    mavenCentral()
 }

@@ -3,15 +3,15 @@ package com.shivamsingh.blog_lite.domain.usecase
 import com.shivamsingh.blog_lite.domain.executor.SchedulerProvider
 import com.shivamsingh.blog_lite.domain.model.Post
 import com.shivamsingh.blog_lite.domain.repository.BlogRepository
-import com.shivamsingh.blog_lite.domain.usecase.base.SingleUseCase
-import io.reactivex.Single
+import com.shivamsingh.blog_lite.domain.usecase.base.FlowableUseCase
+import io.reactivex.Flowable
 import javax.inject.Inject
 
 class FetchPostsUseCase @Inject constructor(schedulerProvider: SchedulerProvider,
                                             val repository: BlogRepository)
-    : SingleUseCase<List<Post>, Unit>(schedulerProvider) {
+    : FlowableUseCase<List<Post>, Unit>(schedulerProvider) {
 
-    override fun buildUseCase(params: Unit): Single<List<Post>> {
+    override fun buildUseCase(params: Unit): Flowable<List<Post>> {
         return repository.posts()
     }
 }

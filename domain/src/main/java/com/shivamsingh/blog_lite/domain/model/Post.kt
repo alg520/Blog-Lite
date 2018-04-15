@@ -1,7 +1,7 @@
 package com.shivamsingh.blog_lite.domain.model
 
-data class Post(val id: Int,
-                val title: String,
-                val body: String,
-                val email: String,
-                val commentsCount: Int)
+data class Post(var id: Int = 0,
+                var title: String = "",
+                var body: String = "",
+                var email: String = "",
+                var commentsCount: Int = 0)

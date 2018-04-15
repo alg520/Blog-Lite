@@ -6,6 +6,7 @@ import com.shivamsingh.blog_lite.BlogApplication
 import com.shivamsingh.blog_lite.di.modules.ActivityBindingModule
 import com.shivamsingh.blog_lite.di.modules.ApplicationModule
 import com.shivamsingh.blog_lite.di.modules.NetworkModule
+import com.shivamsingh.blog_lite.di.modules.RoomModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -14,10 +15,11 @@ import dagger.android.support.DaggerApplication
 
 @PerApplication
 @Component(modules = [
-    (ActivityBindingModule::class),
-    (ApplicationModule::class),
-    (NetworkModule::class),
-    (AndroidSupportInjectionModule::class)
+    ActivityBindingModule::class,
+    ApplicationModule::class,
+    NetworkModule::class,
+    RoomModule::class,
+    AndroidSupportInjectionModule::class
 ])
 interface AppComponent : AndroidInjector<DaggerApplication> {
 

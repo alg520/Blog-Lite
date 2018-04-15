@@ -9,7 +9,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
-@Module(includes = [(CommentListModule::class)])
+@Module(includes = [CommentListModule::class])
 abstract class PostDetailModule {
 
     @PerFragment

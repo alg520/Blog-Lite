@@ -10,9 +10,14 @@ ext {
     ]
 
     endpoints = [
-            staging_endpoint_url = "\"http://jsonplaceholder.typicode.com/\"",
-            live_endpoint_url = "\"http://jsonplaceholder.typicode.com/\"",
+            staging_endpoint_url    = "\"http://jsonplaceholder.typicode.com/\"",
+            live_endpoint_url       = "\"http://jsonplaceholder.typicode.com/\"",
 
-            avatar_endpoint_url = "\"https://api.adorable.io/avatars/\""
+            avatar_endpoint_url     = "\"https://api.adorable.io/avatars/\""
+    ]
+
+    persistence = [
+            database_name           = "\"blog_lite\"",
+            database_version        = "1"
     ]
 }

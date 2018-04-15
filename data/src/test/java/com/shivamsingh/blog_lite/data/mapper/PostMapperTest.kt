@@ -1,7 +1,7 @@
 package com.shivamsingh.blog_lite.data.mapper
 
-import com.shivamsingh.blog_lite.data.BlogDatabase
-import com.shivamsingh.blog_lite.data.source.remote.dto.*
+import com.shivamsingh.blog_lite.data.InMemoryBlogDatabase
+import com.shivamsingh.blog_lite.data.source.dto.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
@@ -27,13 +27,13 @@ class PostMapperTest {
         val body = "some post content"
         val email = "shvmsngh91@gmail.com"
 
-        val postDtos = listOf<PostDto>(PostDto(userId, postId, title, body))
+        val postDtos = listOf<PostDto>(PostDto(postId, userId, title, body))
         val userDtos = listOf<UserDto>(UserDto(userId, "shivam singh", "shvmsngh91",
                 email, mock(AddressDto::class.java), "8108758799",
                 "https://github.com/shivamsingh", mock(CompanyDto::class.java)))
         val commentDtos = listOf<CommentDto>(CommentDto(1, postId, "tirupati balan",
                 "tirupati17@gmail.com", "some test comment"))
-        val blogDatabse = BlogDatabase(postDtos, userDtos, commentDtos)
+        val blogDatabse = InMemoryBlogDatabase(postDtos, userDtos, commentDtos)
 
         // When
         val posts = postMapper.map(blogDatabse)
@@ -58,13 +58,13 @@ class PostMapperTest {
         val body = "some post content"
         val email = "shvmsngh91@gmail.com"
 
-        val postDtos = listOf<PostDto>(PostDto(3, postId, title, body))
+        val postDtos = listOf<PostDto>(PostDto(postId, 3, title, body))
         val userDtos = listOf<UserDto>(UserDto(userId, "shivam singh", "shvmsngh91",
                 email, mock(AddressDto::class.java), "8108758799",
                 "https://github.com/shivamsingh", mock(CompanyDto::class.java)))
         val commentDtos = listOf<CommentDto>(CommentDto(1, postId, "tirupati balan",
                 "tirupati17@gmail.com", "some test comment"))
-        val blogDatabse = BlogDatabase(postDtos, userDtos, commentDtos)
+        val blogDatabse = InMemoryBlogDatabase(postDtos, userDtos, commentDtos)
 
         // When
         val posts = postMapper.map(blogDatabse)
@@ -89,13 +89,13 @@ class PostMapperTest {
         val body = "some post content"
         val email = "shvmsngh91@gmail.com"
 
-        val postDtos = listOf<PostDto>(PostDto(userId, postId, title, body))
+        val postDtos = listOf<PostDto>(PostDto(postId, userId, title, body))
         val userDtos = listOf<UserDto>(UserDto(userId, "shivam singh", "shvmsngh91",
                 email, mock(AddressDto::class.java), "8108758799",
                 "https://github.com/shivamsingh", mock(CompanyDto::class.java)))
         val commentDtos = listOf<CommentDto>(CommentDto(1, 1, "tirupati balan",
                 "tirupati17@gmail.com", "some test comment"))
-        val blogDatabse = BlogDatabase(postDtos, userDtos, commentDtos)
+        val blogDatabse = InMemoryBlogDatabase(postDtos, userDtos, commentDtos)
 
         // When
         val posts = postMapper.map(blogDatabse)
