@@ -24,6 +24,9 @@ class CommentCardHolder(itemView: View, val picasso: Picasso) : RecyclerView.Vie
     @BindView(R.id.pic)
     lateinit var pic: ImageView
 
+    @BindView(R.id.name)
+    lateinit var name: TextView
+
     @BindView(R.id.email)
     lateinit var email: TextView
 
@@ -31,6 +34,7 @@ class CommentCardHolder(itemView: View, val picasso: Picasso) : RecyclerView.Vie
     lateinit var commentBody: TextView
 
     fun bind(comment: CommentEntity) {
+        name.text = comment.name
         email.text = comment.email
         commentBody.text = comment.body
         picasso.load(comment.avatar).into(pic)
