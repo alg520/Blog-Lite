@@ -16,6 +16,6 @@ interface CommentDao {
     @Query("SELECT * FROM comment")
     fun comments(): Flowable<List<CommentDto>>
 
-    @Query("SELECT * FROM comment WHERE :postId")
+    @Query("SELECT * FROM comment WHERE postId = :postId")
     fun comments(postId: Int): Flowable<List<CommentDto>>
 }
