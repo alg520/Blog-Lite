@@ -1,10 +1,17 @@
 # Blog-Lite
 A simple blog application with posts/comments and user detail demonstrating MVP clean architecture in Kotlin.
 
-
 # Screenshots
 
 ![](https://image.ibb.co/jPRCu7/posts_1.jpg)          ![](https://image.ibb.co/mwcVgn/post_detail_1.jpg)
+
+# Run Unit tests
+./gradlew testDebugUnitTest
+
+# TODO
+
+* add more unit tests.
+* add some UI tests.
 
 # Dependencies
 
