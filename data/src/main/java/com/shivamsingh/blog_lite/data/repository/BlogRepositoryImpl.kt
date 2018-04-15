@@ -19,14 +19,14 @@ class BlogRepositoryImpl constructor(private val localSource: BlogLocalSource,
                                      private val commentMapper: CommentMapper) : BlogRepository {
 
     override fun posts(): Flowable<List<Post>> {
-        return Flowable.merge(
+        return Flowable.ambArray(
                 localSource.mappedPosts(),
                 blogDatabase().map { postMapper.map(it) }.toFlowable()
         )
     }
 
     override fun comments(postId: Int): Flowable<List<Comment>> {
-        return Flowable.merge(
+        return Flowable.ambArray(
                 localSource.comments(postId).map { commentMapper.map(it) },
                 remoteSource.comments()
                         .doOnSuccess { localSource.saveComments(it) }
