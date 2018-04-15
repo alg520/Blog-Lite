@@ -2,8 +2,10 @@ package com.shivamsingh.blog_lite.ui.features.posts.module
 
 import com.aasaanjobs.partnerinternal.di.scopes.PerActivity
 import com.shivamsingh.blog_lite.data.mapper.CommentMapper
+import com.shivamsingh.blog_lite.data.mapper.PostDatabaseEntityMapper
 import com.shivamsingh.blog_lite.data.mapper.PostMapper
 import com.shivamsingh.blog_lite.data.repository.BlogRepositoryImpl
+import com.shivamsingh.blog_lite.data.source.local.BlogLocalSourceImpl
 import com.shivamsingh.blog_lite.data.source.remote.BlogRemoteSourceImpl
 import com.shivamsingh.blog_lite.data.source.remote.BlogService
 import com.shivamsingh.blog_lite.domain.repository.BlogRepository
@@ -22,9 +24,11 @@ class PostsDataModule {
 
     @Provides
     @PerActivity
-    fun blogRepository(remoteSource: BlogRemoteSourceImpl,
+    fun blogRepository(localSource: BlogLocalSourceImpl,
+                       remoteSource: BlogRemoteSourceImpl,
+                       postDatabaseEntityMapper: PostDatabaseEntityMapper,
                        postMapper: PostMapper,
                        commentMapper: CommentMapper): BlogRepository {
-        return BlogRepositoryImpl(remoteSource, postMapper, commentMapper)
+        return BlogRepositoryImpl(localSource, remoteSource, postDatabaseEntityMapper, postMapper, commentMapper)
     }
 }

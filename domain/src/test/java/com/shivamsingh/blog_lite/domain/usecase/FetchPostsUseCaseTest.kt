@@ -15,6 +15,7 @@ import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 import java.util.Collections.singletonList
 import com.nhaarman.mockito_kotlin.mock
+import io.reactivex.Flowable
 
 class FetchPostsUseCaseTest : BaseTest() {
 
@@ -40,7 +41,7 @@ class FetchPostsUseCaseTest : BaseTest() {
         val successCallback = mock<(List<Post>) -> Unit> { }
         val errorCallback = mock<(Throwable) -> Unit> { }
 
-        `when`(repository.posts()).thenReturn(Single.just(posts))
+        `when`(repository.posts()).thenReturn(Flowable.just(posts))
 
         // When
         fetchPostsUseCase.execute(successCallback, errorCallback, Unit)
@@ -56,7 +57,7 @@ class FetchPostsUseCaseTest : BaseTest() {
         val successCallback = mock<(List<Post>) -> Unit> { }
         val errorCallback = mock<(Throwable) -> Unit> { }
 
-        `when`(repository.posts()).thenReturn(Single.error(throwable))
+        `when`(repository.posts()).thenReturn(Flowable.error(throwable))
 
         // When
         fetchPostsUseCase.execute(successCallback, errorCallback, Unit)

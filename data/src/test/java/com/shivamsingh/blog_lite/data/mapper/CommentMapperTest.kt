@@ -1,6 +1,6 @@
 package com.shivamsingh.blog_lite.data.mapper
 
-import com.shivamsingh.blog_lite.data.source.remote.dto.CommentDto
+import com.shivamsingh.blog_lite.data.source.dto.CommentDto
 import com.shivamsingh.blog_lite.util.BaseTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before

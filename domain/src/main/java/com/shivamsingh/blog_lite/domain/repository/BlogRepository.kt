@@ -7,7 +7,7 @@ import io.reactivex.Single
 
 interface BlogRepository {
 
-    fun posts(): Single<List<Post>>
+    fun posts(): Flowable<List<Post>>
 
-    fun comments(postId: Int): Single<List<Comment>>
+    fun comments(postId: Int): Flowable<List<Comment>>
 }
