@@ -7,15 +7,13 @@ import com.shivamsingh.blog_lite.domain.executor.SchedulerProvider
 import com.shivamsingh.blog_lite.domain.model.Comment
 import com.shivamsingh.blog_lite.domain.repository.BlogRepository
 import com.shivamsingh.blog_lite.util.BaseTest
-import io.reactivex.Single
+import io.reactivex.Flowable
 import io.reactivex.schedulers.Schedulers
 import org.junit.Before
 import org.junit.Test
-import org.mockito.ArgumentMatchers.anyInt
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.Mockito.mock
-import java.util.*
 import java.util.Collections.singletonList
 
 class FetchCommentsUseCaseTest : BaseTest() {
@@ -42,7 +40,7 @@ class FetchCommentsUseCaseTest : BaseTest() {
         val successCallback = mock<(List<Comment>) -> Unit> { }
         val errorCallback = mock<(Throwable) -> Unit> { }
 
-        Mockito.`when`(repository.comments(postId)).thenReturn(Single.just(comments))
+        Mockito.`when`(repository.comments(postId)).thenReturn(Flowable.just(comments))
 
         // When
         fetchCommentsUseCase.execute(successCallback, errorCallback, postId)
@@ -59,7 +57,7 @@ class FetchCommentsUseCaseTest : BaseTest() {
         val successCallback = mock<(List<Comment>) -> Unit> { }
         val errorCallback = mock<(Throwable) -> Unit> { }
 
-        Mockito.`when`(repository.comments(postId)).thenReturn(Single.error(throwable))
+        Mockito.`when`(repository.comments(postId)).thenReturn(Flowable.error(throwable))
 
         // When
         fetchCommentsUseCase.execute(successCallback, errorCallback, postId)

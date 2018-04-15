@@ -27,7 +27,7 @@ class PostMapperTest {
         val body = "some post content"
         val email = "shvmsngh91@gmail.com"
 
-        val postDtos = listOf<PostDto>(PostDto(userId, postId, title, body))
+        val postDtos = listOf<PostDto>(PostDto(postId, userId, title, body))
         val userDtos = listOf<UserDto>(UserDto(userId, "shivam singh", "shvmsngh91",
                 email, mock(AddressDto::class.java), "8108758799",
                 "https://github.com/shivamsingh", mock(CompanyDto::class.java)))
@@ -58,7 +58,7 @@ class PostMapperTest {
         val body = "some post content"
         val email = "shvmsngh91@gmail.com"
 
-        val postDtos = listOf<PostDto>(PostDto(3, postId, title, body))
+        val postDtos = listOf<PostDto>(PostDto(postId, 3, title, body))
         val userDtos = listOf<UserDto>(UserDto(userId, "shivam singh", "shvmsngh91",
                 email, mock(AddressDto::class.java), "8108758799",
                 "https://github.com/shivamsingh", mock(CompanyDto::class.java)))
@@ -89,7 +89,7 @@ class PostMapperTest {
         val body = "some post content"
         val email = "shvmsngh91@gmail.com"
 
-        val postDtos = listOf<PostDto>(PostDto(userId, postId, title, body))
+        val postDtos = listOf<PostDto>(PostDto(postId, userId, title, body))
         val userDtos = listOf<UserDto>(UserDto(userId, "shivam singh", "shvmsngh91",
                 email, mock(AddressDto::class.java), "8108758799",
                 "https://github.com/shivamsingh", mock(CompanyDto::class.java)))

@@ -23,20 +23,20 @@ class BlogRepositoryImpl constructor(private val localSource: BlogLocalSource,
     override fun posts(): Flowable<List<Post>> {
         return Flowable.merge(
                 localSource.mappedPosts().map { postDatabaseEntityMapper.map(it) },
-                blogDatabase().map { postRemoteMapper.map(it) }.toFlowable()
+                blogDatabase().map(postRemoteMapper::map).toFlowable()
         )
     }
 
     override fun comments(postId: Int): Flowable<List<Comment>> {
         return Flowable.merge(
-                localSource.comments(postId).map { commentMapper.map(it) },
+                localSource.comments(postId).map(commentMapper::map),
                 remoteSource.comments()
-                        .doOnSuccess { localSource.saveComments(it) }
+                        .doOnSuccess(localSource::saveComments)
                         .toObservable()
                         .flatMap { Observable.fromIterable(it) }
                         .filter { it.postId == postId }
                         .toList()
-                        .map { commentMapper.map(it) }
+                        .map(commentMapper::map)
                         .toFlowable()
         )
     }
@@ -45,13 +45,13 @@ class BlogRepositoryImpl constructor(private val localSource: BlogLocalSource,
         return Single.zip(
                 remoteSource
                         .posts()
-                        .doOnSuccess { localSource.savePosts(it) },
+                        .doOnSuccess(localSource::savePosts),
                 remoteSource
                         .users()
-                        .doOnSuccess { localSource.saveUsers(it) },
+                        .doOnSuccess(localSource::saveUsers),
                 remoteSource
                         .comments()
-                        .doOnSuccess { localSource.saveComments(it) },
+                        .doOnSuccess(localSource::saveComments),
                 Function3(::InMemoryBlogDatabase))
     }
 }
