@@ -4,7 +4,7 @@ A simple blog application with posts/comments and user detail demonstrating MVP 
 
 # Screenshopts
 
-![](https://image.ibb.co/fakBnS/posts.jpg)    ![](https://image.ibb.co/cAXP7S/post_detail.jpg)
+![](https://image.ibb.co/fakBnS/posts.jpg)    ![](https://image.ibb.co/mwcVgn/post_detail_1.jpg)
 
 # Dependencies
 
