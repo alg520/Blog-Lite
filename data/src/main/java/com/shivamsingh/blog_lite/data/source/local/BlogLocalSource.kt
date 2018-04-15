@@ -3,6 +3,7 @@ package com.shivamsingh.blog_lite.data.source.local
 import com.shivamsingh.blog_lite.data.source.dto.CommentDto
 import com.shivamsingh.blog_lite.data.source.dto.PostDto
 import com.shivamsingh.blog_lite.data.source.dto.UserDto
+import com.shivamsingh.blog_lite.data.source.local.entity.PostEntity
 import com.shivamsingh.blog_lite.domain.model.Post
 import io.reactivex.Flowable
 
@@ -10,7 +11,7 @@ interface BlogLocalSource {
 
     fun posts(): Flowable<List<PostDto>>
 
-    fun mappedPosts(): Flowable<List<Post>>
+    fun mappedPosts(): Flowable<List<PostEntity>>
 
     fun users(): Flowable<List<UserDto>>
 

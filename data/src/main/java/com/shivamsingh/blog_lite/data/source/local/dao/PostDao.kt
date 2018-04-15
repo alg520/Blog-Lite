@@ -5,6 +5,7 @@ import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
 import com.shivamsingh.blog_lite.data.source.dto.PostDto
+import com.shivamsingh.blog_lite.data.source.local.entity.PostEntity
 import com.shivamsingh.blog_lite.domain.model.Post
 import io.reactivex.Flowable
 
@@ -24,5 +25,5 @@ interface PostDao {
         LEFT JOIN comment ON comment.postId = post.id
         GROUP BY post.id, post.userId, post.title, post.body, user.email
     """)
-    fun mappedPosts(): Flowable<List<Post>>
+    fun mappedPosts(): Flowable<List<PostEntity>>
 }
