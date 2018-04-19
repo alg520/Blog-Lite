@@ -12,6 +12,7 @@ A simple blog application with posts/comments and user detail demonstrating MVP 
 
 * add more unit tests.
 * add some UI tests.
+* a branched out code to demonstrate kotlin-coroutines 
 
 # Dependencies
 
