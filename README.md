@@ -5,6 +5,11 @@ A simple blog application with posts/comments and user detail demonstrating MVP 
 
 ![](https://image.ibb.co/jPRCu7/posts_1.jpg)          ![](https://image.ibb.co/mwcVgn/post_detail_1.jpg)
 
+# Remote data source
+- http://jsonplaceholder.typicode.com/posts
+- http://jsonplaceholder.typicode.com/users
+- http://jsonplaceholder.typicode.com/comments
+
 # Run Unit tests
 ./gradlew testDebugUnitTest
 
